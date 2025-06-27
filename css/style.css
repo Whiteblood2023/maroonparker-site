@@ -4,6 +4,7 @@
   --bg: #f4f6fa;
   --white: #fff;
   --text: #222;
+  --footer-bg: var(--main);
 }
 
 body {
@@ -11,6 +12,17 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Modo escuro */
+body.dark-mode {
+  --main: #232a40;
+  --accent: #ffd166;
+  --bg: #181c2a;
+  --white: #232a40;
+  --text: #f5f7fb;
+  --footer-bg: #151a26;
 }
 
 header {
@@ -21,6 +33,7 @@ header {
   align-items: center;
   padding: 1.5em 0 1em 0;
   box-shadow: 0 2px 8px #0001;
+  transition: background 0.3s, color 0.3s;
 }
 
 .logo {
@@ -63,6 +76,7 @@ main {
   border-radius: 12px;
   box-shadow: 0 4px 16px #0001;
   padding: 2.5em;
+  transition: background 0.3s, color 0.3s;
 }
 
 .bemvindo {
@@ -107,7 +121,16 @@ main {
   font-size: 1em;
   background: #f7f9fc;
   resize: none;
+  color: var(--text);
 }
+
+body.dark-mode .contato-form input,
+body.dark-mode .contato-form textarea {
+  background: #232a40;
+  border-color: #20253b;
+  color: var(--text);
+}
+
 .contato-form button {
   background: var(--main);
   color: var(--white);
@@ -131,10 +154,11 @@ footer {
   margin-top: 3em;
   text-align: center;
   padding: 1em 0;
-  background: var(--main);
+  background: var(--footer-bg);
   color: var(--white);
   font-size: 1em;
   border-radius: 0 0 12px 12px;
+  transition: background 0.3s, color 0.3s;
 }
 
 @media (max-width: 600px) {
@@ -145,4 +169,29 @@ footer {
     flex-direction: column;
     gap: 1em;
   }
+}
+
+/* Botão modo escuro */
+.mode-toggle {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  z-index: 999;
+  background: var(--main);
+  color: var(--accent);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.7em;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0002;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, color 0.3s;
+}
+.mode-toggle:hover {
+  background: var(--accent);
+  color: var(--main);
 }

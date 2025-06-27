@@ -2,49 +2,55 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Devocionais | Maroon R. Parker</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maroon R. Parker - Devocionais</title>
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body>
+  <!-- Botão Modo Claro/Escuro -->
+  <button class="mode-toggle" title="Alternar modo claro/escuro" onclick="toggleMode()">
+    <i id="modeIcon" class="ri-moon-line"></i>
+  </button>
   <header>
     <div class="logo">
-      <span class="logo-icon"><i class="ri-book-3-line"></i></span>
-      <span>Maroon R. Parker</span>
+      <span class="logo-icon"><i class="ri-book-2-fill"></i></span>
+      Maroon R. Parker
     </div>
     <nav>
       <a href="index.html"><i class="ri-home-4-line"></i> Início</a>
       <a href="livros.html"><i class="ri-book-open-line"></i> Livros</a>
-      <a href="devocionais.html"><i class="ri-leaf-line"></i> Devocionais</a>
+      <a href="devocionais.html"><i class="ri-sparkling-2-line"></i> Devocionais</a>
       <a href="contato.html"><i class="ri-mail-line"></i> Contato</a>
     </nav>
   </header>
   <main>
-    <h2><i class="ri-leaf-line"></i> Devocionais para Download</h2>
-    <p>Baixe devocionais inspiradores para fortalecer sua caminhada diária!</p>
+    <h1>Devocionais</h1>
     <ul class="downloads">
-      <li>
-        <i class="ri-heart-2-line"></i>
-        <a href="devocionais/devocional-exemplo.pdf" download>Devocional Exemplo (PDF)</a>
-      </li>
-      <!-- Adicione outros devocionais abaixo, neste padrão -->
-      <!--
-      <li>
-        <i class="ri-heart-2-line"></i>
-        <a href="devocionais/nome-do-devocional.pdf" download>Nome do Devocional (PDF)</a>
-      </li>
-      -->
+      <li><i class="ri-download-2-line"></i> <a href="devocionais/devocional-exemplo.pdf" download>Devocional Exemplo</a></li>
+      <!-- Adicione mais devocionais aqui -->
     </ul>
-    <div class="figurinhas">
-      <i class="ri-sparkling-2-line"></i>
-      <i class="ri-plant-line"></i>
-    </div>
   </main>
   <footer>
-    <div>
-      <i class="ri-copyright-line"></i> 2025 Maroon R. Parker
-    </div>
+    &copy; 2025 Maroon R. Parker. Feito com <i class="ri-heart-fill"></i>
   </footer>
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+        document.getElementById('modeIcon').className = 'ri-sun-line';
+      } else {
+        localStorage.setItem('theme', 'light');
+        document.getElementById('modeIcon').className = 'ri-moon-line';
+      }
+    }
+    window.onload = function() {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('modeIcon').className = 'ri-sun-line';
+      }
+    };
+  </script>
 </body>
 </html>
