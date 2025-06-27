@@ -1,0 +1,148 @@
+:root {
+  --main: #4A60A1;
+  --accent: #F9DC5C;
+  --bg: #f4f6fa;
+  --white: #fff;
+  --text: #222;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  background: var(--main);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5em 0 1em 0;
+  box-shadow: 0 2px 8px #0001;
+}
+
+.logo {
+  font-size: 2em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.logo-icon {
+  font-size: 1.5em;
+  color: var(--accent);
+}
+
+nav {
+  display: flex;
+  gap: 2em;
+}
+
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.1em;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 700px;
+  margin: 2em auto;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px #0001;
+  padding: 2.5em;
+}
+
+.bemvindo {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.figurinhas i {
+  font-size: 2em;
+  margin: 0 0.3em;
+  color: var(--accent);
+}
+
+.downloads {
+  list-style: none;
+  padding: 0;
+}
+
+.downloads li {
+  margin: 1em 0;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+
+.contato-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin: 2em 0;
+}
+.contato-form label {
+  font-weight: bold;
+  margin-bottom: 0.2em;
+}
+.contato-form input,
+.contato-form textarea {
+  border: 1px solid #d0d6e1;
+  border-radius: 5px;
+  padding: 0.7em;
+  font-size: 1em;
+  background: #f7f9fc;
+  resize: none;
+}
+.contato-form button {
+  background: var(--main);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  padding: 1em 1.5em;
+  font-size: 1.1em;
+  cursor: pointer;
+  margin-top: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  transition: background 0.2s;
+}
+.contato-form button:hover {
+  background: var(--accent);
+  color: var(--main);
+}
+
+footer {
+  margin-top: 3em;
+  text-align: center;
+  padding: 1em 0;
+  background: var(--main);
+  color: var(--white);
+  font-size: 1em;
+  border-radius: 0 0 12px 12px;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 1em;
+  }
+  nav {
+    flex-direction: column;
+    gap: 1em;
+  }
+}
