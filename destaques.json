@@ -1,0 +1,20 @@
+[
+  {
+    "titulo": "Livro Exemplo",
+    "subtitulo": "Descubra uma nova perspectiva sobre a fé.",
+    "link": "Conteúdo/livros/Plano.pdf",
+    "tipo": "Livro"
+  },
+  {
+    "titulo": "Devocional Exemplo",
+    "subtitulo": "Reflexões diárias para o seu crescimento.",
+    "link": "Conteúdo/devocionais/HIV.pdf",
+    "tipo": "Devocional"
+  },
+  {
+    "titulo": "Lançamento: Jornada Interior",
+    "subtitulo": "Um mergulho profundo na jornada espiritual pessoal.",
+    "link": "#",
+    "tipo": "Lançamento"
+  }
+]

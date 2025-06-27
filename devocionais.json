@@ -1,0 +1,30 @@
+[
+  {
+    "tema": "Namoro",
+    "devocionais": [
+      {
+        "titulo": "Escolhas no Namoro",
+        "descricao": "Como honrar a Deus nos relacionamentos amorosos.",
+        "autor": "Maroon R. Parker",
+        "arquivo": "devocionais/namoro-escolhas.pdf"
+      },
+      {
+        "titulo": "Caminhando Juntos",
+        "descricao": "Devocional para casais que desejam crescer juntos espiritualmente.",
+        "autor": "Maroon R. Parker",
+        "arquivo": "devocionais/namoro-caminhando.pdf"
+      }
+    ]
+  },
+  {
+    "tema": "Fé",
+    "devocionais": [
+      {
+        "titulo": "Fé Inabalável",
+        "descricao": "Fortaleça sua fé em meio às adversidades.",
+        "autor": "Maroon R. Parker",
+        "arquivo": "devocionais/fe-inabalavel.pdf"
+      }
+    ]
+  }
+]

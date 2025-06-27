@@ -2,45 +2,107 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Contato | Maroon R. Parker</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+  <title>Contato</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    #contato {
+      max-width: 420px;
+      margin: 3em auto;
+      background: #f7f9fc;
+      border-radius: 12px;
+      padding: 2em;
+      box-shadow: 0 4px 16px #0001;
+    }
+    #form-contato {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1em;
+    }
+    #form-contato label {
+      font-weight: bold;
+    }
+    #form-contato input,
+    #form-contato textarea {
+      padding: 0.6em;
+      border-radius: 6px;
+      border: 1px solid #d0d6e1;
+      font-size: 1em;
+    }
+    #form-contato button {
+      background: #3549d1;
+      color: #fff;
+      border: none;
+      padding: 0.7em 1.5em;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    #contato-feedback {
+      margin-top: 0.3em;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <!-- Google reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <span class="logo-icon"><i class="ri-book-3-line"></i></span>
-      <span>Maroon R. Parker</span>
-    </div>
-    <nav>
-      <a href="index.html"><i class="ri-home-4-line"></i> Início</a>
-      <a href="livros.html"><i class="ri-book-open-line"></i> Livros</a>
-      <a href="devocionais.html"><i class="ri-leaf-line"></i> Devocionais</a>
-      <a href="contato.html"><i class="ri-mail-line"></i> Contato</a>
-    </nav>
-  </header>
-  <main>
-    <h2><i class="ri-mail-line"></i> Entre em Contato</h2>
-    <p>Quer enviar uma mensagem, sugestão, ou convite? Preencha o formulário abaixo:</p>
-    <form class="contato-form" action="mailto:contato@seudominio.com" method="POST" enctype="text/plain">
+  <section id="contato">
+    <h2>Fale Conosco</h2>
+    <form id="form-contato">
       <label for="nome">Nome:</label>
-      <input type="text" id="nome" name="Nome" required>
-      <label for="email">E-mail:</label>
-      <input type="email" id="email" name="Email" required>
+      <input type="text" id="nome" name="user_name" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="user_email" required>
       <label for="mensagem">Mensagem:</label>
-      <textarea id="mensagem" name="Mensagem" rows="5" required></textarea>
-      <button type="submit"><i class="ri-send-plane-2-line"></i> Enviar</button>
+      <textarea id="mensagem" name="message" rows="5" required></textarea>
+      <div class="g-recaptcha" data-sitekey="SUA_SITE_KEY"></div>
+      <button type="submit">Enviar</button>
+      <span id="contato-feedback" style="display:none;"></span>
     </form>
-    <div class="figurinhas">
-      <i class="ri-message-2-line"></i>
-      <i class="ri-moon-line"></i>
-    </div>
-  </main>
-  <footer>
-    <div>
-      <i class="ri-copyright-line"></i> 2025 Maroon R. Parker
-    </div>
-  </footer>
+  </section>
+  <script>
+    window.onload = function() {
+      emailjs.init("SUA_PUBLIC_KEY"); // Troque por seu Public Key do EmailJS (ex: F2V6...)
+    };
+
+    document.getElementById('form-contato').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var recaptcha = grecaptcha.getResponse();
+      var feedback = document.getElementById('contato-feedback');
+      var btn = this.querySelector('button[type=submit]');
+      feedback.style.display = 'none';
+      feedback.textContent = '';
+      feedback.style.color = 'green';
+      if (!recaptcha) {
+        feedback.textContent = 'Por favor, marque o reCAPTCHA.';
+        feedback.style.color = 'red';
+        feedback.style.display = 'inline';
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+
+      emailjs.sendForm('SEU_SERVICE_ID', 'SEU_TEMPLATE_ID', this)
+        .then(function() {
+          feedback.textContent = 'Mensagem enviada! Obrigado pelo contato.';
+          feedback.style.color = 'green';
+          feedback.style.display = 'inline';
+          btn.disabled = false;
+          btn.textContent = 'Enviar';
+          document.getElementById('form-contato').reset();
+          grecaptcha.reset();
+        }, function(error) {
+          feedback.textContent = 'Falha ao enviar. Tente novamente.';
+          feedback.style.color = 'red';
+          feedback.style.display = 'inline';
+          btn.disabled = false;
+          btn.textContent = 'Enviar';
+        });
+    });
+  </script>
 </body>
 </html>

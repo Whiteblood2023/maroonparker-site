@@ -20,7 +20,7 @@ body.dark-mode {
   --main: #232a40;
   --accent: #ffd166;
   --bg: #181c2a;
-  --white: #232a40;
+  --white: #f5f7fb;
   --text: #f5f7fb;
   --footer-bg: #151a26;
 }
@@ -77,6 +77,18 @@ main {
   box-shadow: 0 4px 16px #0001;
   padding: 2.5em;
   transition: background 0.3s, color 0.3s;
+}
+
+/* Main no modo escuro igual ao cabeçalho */
+body.dark-mode main {
+  background: var(--main);
+  color: var(--white);
+}
+body.dark-mode main h1,
+body.dark-mode main h2,
+body.dark-mode main p,
+body.dark-mode main li {
+  color: var(--white);
 }
 
 .bemvindo {
@@ -170,7 +182,113 @@ footer {
     gap: 1em;
   }
 }
+.livros-galeria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
+  margin: 2em 0;
+}
+.livro-card {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px #0001;
+  max-width: 260px;
+  min-width: 220px;
+  padding: 1.2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background 0.3s, color 0.3s;
+}
+body.dark-mode .livro-card {
+  background: var(--main);
+  color: var(--white);
+}
+.livro-capa {
+  width: 100%;
+  max-width: 180px;
+  border-radius: 8px;
+  margin-bottom: 1em;
+  box-shadow: 0 2px 8px #0002;
+}
+.livro-info {
+  text-align: center;
+}
+.livro-autor {
+  font-size: 0.95em;
+  color: var(--accent);
+  margin: 0.3em 0;
+}
+.livro-sobre {
+  margin-bottom: 0.7em;
+  font-size: 0.97em;
+}
+.livro-download {
+  background: var(--accent);
+  color: var(--main);
+  padding: 0.5em 1.3em;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.2s, color 0.2s;
+}
+.livro-download:hover {
+  background: var(--main);
+  color: var(--white);
+}
 
+.dev-cat {
+  margin-bottom: 2.5em;
+}
+.dev-cat h2 {
+  color: var(--main);
+  margin-bottom: 1em;
+}
+body.dark-mode .dev-cat h2 {
+  color: var(--accent);
+}
+.devocionais-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em;
+}
+.devocional-card {
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px #0001;
+  max-width: 300px;
+  min-width: 200px;
+  padding: 1.1em;
+  transition: background 0.3s, color 0.3s;
+}
+body.dark-mode .devocional-card {
+  background: var(--main);
+  color: var(--white);
+}
+.dev-desc {
+  margin-bottom: 0.6em;
+  font-size: 0.98em;
+}
+.dev-autor {
+  font-size: 0.93em;
+  color: var(--accent);
+}
+.dev-download {
+  display: inline-block;
+  margin-top: 0.5em;
+  background: var(--accent);
+  color: var(--main);
+  padding: 0.4em 1.1em;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.dev-download:hover {
+  background: var(--main);
+  color: var(--white);
+}
 /* Botão modo escuro */
 .mode-toggle {
   position: fixed;

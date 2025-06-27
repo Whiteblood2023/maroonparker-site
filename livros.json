@@ -1,0 +1,20 @@
+[
+  {
+    "autor": "Maroon R. Parker",
+    "livros": [
+      {
+        "titulo": "A Jornada da Fé",
+        "sobre": "Um livro inspirador sobre a caminhada cristã, desafios e superações.",
+        "capa": "livros/jornada-da-fe.jpg",
+        "arquivo": "livros/jornada-da-fe.pdf"
+      },
+      {
+        "titulo": "Amor e Graça",
+        "sobre": "Reflexões profundas sobre o amor de Deus e o poder da graça.",
+        "capa": "livros/amor-e-graca.jpg",
+        "arquivo": "livros/amor-e-graca.pdf"
+      }
+    ]
+  }
+
+]
