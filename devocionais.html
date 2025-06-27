@@ -2,197 +2,153 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Devocionais - Maroon R. Parker</title>
+  <title>Devocionais</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-  <!-- Insira seu CSS customizado extra abaixo se desejar -->
   <style>
-    .devocionais-topo {
-      display: flex;
-      flex-direction: column;
-      gap: 0.7em;
-      margin-bottom: 1.3em;
-      align-items: flex-start;
+    body {
+      background: #fafaff;
+      color: #232333;
+      transition: background 0.3s, color 0.3s;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
     }
-    #busca-categoria {
-      padding: 0.6em 1em;
-      border-radius: 6px;
-      border: 1px solid #d0d6e1;
-      font-size: 1.08em;
-      width: 100%;
-      max-width: 350px;
-      background: #f7f9fc;
-      color: var(--text);
+    body.dark-mode {
+      background: #17171f;
+      color: #e4e4ee;
     }
-    body.dark-mode #busca-categoria {
-      background: #232a40;
-      border-color: #20253b;
-      color: var(--text);
+    #devocionais-card {
+      max-width: 700px;
+      margin: 2em auto;
+      background: #fff;
+      border-radius: 22px;
+      padding: 2.5em 2em 2em 2em;
+      box-shadow: 0 8px 32px #7c88d633, 0 1.5px 6px #0001;
+      border: 1.5px solid #e0e7ff;
+      animation: fadein 1s;
+      transition: background 0.3s, color 0.3s;
     }
-    .categorias-az {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5em;
-      margin-top: 0.2em;
+    body.dark-mode #devocionais-card {
+      background: #23233a;
+      color: #e4e4ee;
+      border: 1.5px solid #232345;
     }
-    .cat-az-btn {
-      background: var(--accent);
-      color: var(--main);
-      border: none;
-      border-radius: 4px;
-      padding: 0.4em 1em;
-      font-size: 1em;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
+    @keyframes fadein {
+      from {opacity: 0; transform: translateY(40px);}
+      to {opacity: 1; transform: translateY(0);}
     }
-    .cat-az-btn:hover {
-      background: var(--main);
-      color: var(--white);
+    #devocionais-card h2 {
+      text-align: center;
+      margin-bottom: 1.6em;
+      font-size: 2em;
+      color: #2d3991;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      transition: color 0.3s;
     }
-    .dev-cat {
-      margin-bottom: 2.5em;
-    }
-    .dev-cat h2 {
-      color: var(--main);
-      margin-bottom: 1em;
-    }
-    body.dark-mode .dev-cat h2 {
-      color: var(--accent);
+    body.dark-mode #devocionais-card h2 {
+      color: #8ea4ef;
     }
     .devocionais-lista {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 1.5em;
+      margin-top: 1em;
     }
-    .devocional-card {
-      background: var(--white);
-      border-radius: 10px;
-      box-shadow: 0 4px 16px #0001;
-      max-width: 300px;
-      min-width: 200px;
-      padding: 1.1em;
-      transition: background 0.3s, color 0.3s;
+    .devocional {
+      background: #f7faff;
+      border-radius: 14px;
+      padding: 1.2em 1em;
+      box-shadow: 0 2px 8px #7c88d622;
+      border: 1.2px solid #c2c8de;
+      transition: background 0.3s, color 0.3s, border 0.3s;
     }
-    body.dark-mode .devocional-card {
-      background: var(--main);
-      color: var(--white);
+    .devocional h3 {
+      margin: 0.8em 0 0.3em 0;
+      font-size: 1.13em;
+      color: #2d3991;
+      font-weight: 600;
+      text-align: left;
+      transition: color 0.3s;
     }
-    .dev-desc {
-      margin-bottom: 0.6em;
-      font-size: 0.98em;
+    .devocional p {
+      margin: 0;
+      font-size: 0.97em;
+      color: #444;
+      transition: color 0.3s;
     }
-    .dev-autor {
-      font-size: 0.93em;
-      color: var(--accent);
+    body.dark-mode .devocional {
+      background: #232345;
+      border: 1.2px solid #40406b;
+      color: #e4e4ee;
     }
-    .dev-download {
-      display: inline-block;
-      margin-top: 0.5em;
-      background: var(--accent);
-      color: var(--main);
-      padding: 0.4em 1.1em;
-      border-radius: 5px;
-      font-weight: bold;
-      text-decoration: none;
+    body.dark-mode .devocional h3 {
+      color: #8ea4ef;
+    }
+    body.dark-mode .devocional p {
+      color: #bbb;
+    }
+    #toggle-darkmode {
+      position: fixed;
+      top: 1em;
+      right: 1em;
+      z-index: 10;
+      padding: 0.7em 1.1em;
+      border-radius: 8px;
+      border: none;
+      background: #ececec;
+      color: #222;
+      font-size: 1.2em;
+      cursor: pointer;
+      box-shadow: 0 1px 6px #0002;
       transition: background 0.2s, color 0.2s;
     }
-    .dev-download:hover {
-      background: var(--main);
-      color: var(--white);
+    #toggle-darkmode:hover {
+      background: #c2c8de;
+      color: #2d3991;
+    }
+    body.dark-mode #toggle-darkmode {
+      background: #232345;
+      color: #e4e4ee;
+      box-shadow: 0 1px 8px #0004;
+    }
+    @media (max-width: 900px) {
+      #devocionais-card { padding: 1.2em 0.7em 1.4em 0.7em; }
+    }
+    @media (max-width: 600px) {
+      #devocionais-card h2 { font-size: 1.3em; }
+      #toggle-darkmode { top: 0.3em; right: 0.3em; padding: 0.5em 0.7em; font-size: 1em; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <!-- Seu header aqui -->
-  </header>
-  <main>
-    <h1>Devocionais</h1>
-    <div class="devocionais-topo">
-      <input type="text" id="busca-categoria" placeholder="Buscar categoria..." autocomplete="off">
-      <div id="categorias-az" class="categorias-az"></div>
+  <button id="toggle-darkmode" aria-label="Alternar modo escuro/claro">🌙/☀️</button>
+  <section id="devocionais-card">
+    <h2>Devocionais</h2>
+    <div class="devocionais-lista">
+      <div class="devocional">
+        <h3>Confie no Senhor</h3>
+        <p>Uma reflexão sobre confiar em Deus em todas as circunstâncias.</p>
+      </div>
+      <div class="devocional">
+        <h3>Gratidão Diária</h3>
+        <p>Encontre motivos para agradecer todos os dias.</p>
+      </div>
+      <!-- Adicione mais devocionais aqui -->
     </div>
-    <div id="devocionais-categorias"></div>
-  </main>
-  <footer>
-    <!-- Seu footer aqui -->
-  </footer>
+  </section>
   <script>
-    fetch('devocionais.json')
-      .then(resp => resp.json())
-      .then(categorias => {
-        // Renderiza as categorias na lista principal
-        const container = document.getElementById('devocionais-categorias');
-        container.innerHTML = categorias.map(cat => `
-          <section class="dev-cat" id="cat-${slugify(cat.tema)}">
-            <h2>${cat.tema}</h2>
-            <div class="devocionais-lista">
-              ${cat.devocionais.map(dev => `
-                <div class="devocional-card">
-                  <h3>${dev.titulo}</h3>
-                  <p class="dev-desc">${dev.descricao}</p>
-                  <p class="dev-autor"><b>Autor:</b> ${dev.autor}</p>
-                  <a href="${dev.arquivo}" class="dev-download" download>Baixar</a>
-                </div>
-              `).join('')}
-            </div>
-          </section>
-        `).join('');
-
-        // Renderiza painel de seleção rápida
-        const todasCategorias = categorias.map(cat => cat.tema).sort((a,b) => a.localeCompare(b));
-        renderCategoriasAZ(todasCategorias);
-
-        // Busca dinâmica
-        document.getElementById('busca-categoria').addEventListener('input', function() {
-          const termo = this.value.trim().toLowerCase();
-          if(!termo) {
-            renderCategoriasAZ(todasCategorias);
-          } else {
-            // Busca aproximada
-            const filtradas = todasCategorias.filter(cat =>
-              cat.toLowerCase().includes(termo) ||
-              similaridade(cat.toLowerCase(), termo) > 0.55
-            );
-            renderCategoriasAZ(filtradas.length ? filtradas : ["Nenhuma categoria encontrada"]);
-          }
-        });
-      });
-
-    // Função para transformar tema em ID/slug
-    function slugify(text) {
-      return text.toLowerCase()
-        .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9]/g, '-');
-    }
-
-    // Renderiza lista de categorias A-Z para clicar
-    function renderCategoriasAZ(lista) {
-      const el = document.getElementById('categorias-az');
-      el.innerHTML = lista.map(cat =>
-        `<button class="cat-az-btn" onclick="scrollToCategoria('${slugify(cat)}')">${cat}</button>`
-      ).join('');
-    }
-
-    // Faz scroll suave para a categoria escolhida
-    function scrollToCategoria(id) {
-      const sec = document.getElementById('cat-' + id);
-      if(sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-
-    // Busca aproximada simples (pontuação de similaridade)
-    function similaridade(a, b) {
-      // Levenshtein (simplificado)
-      if(a === b) return 1;
-      const matrix = Array.from({length: b.length+1}, (_,i)=>[i]);
-      for(let i=0;i<=a.length;i++)matrix[0][i]=i;
-      for(let i=1;i<=b.length;i++)
-        for(let j=1;j<=a.length;j++)
-          matrix[i][j]=b[i-1]===a[j-1]?matrix[i-1][j-1]:
-            Math.min(matrix[i-1][j-1],matrix[i][j-1],matrix[i-1][j])+1;
-      const dist = matrix[b.length][a.length];
-      return 1 - dist/Math.max(a.length, b.length);
-    }
+    // Dark mode toggle
+    document.getElementById('toggle-darkmode').onclick = function () {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    };
+    window.onload = function() {
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+      }
+    };
   </script>
 </body>
 </html>
