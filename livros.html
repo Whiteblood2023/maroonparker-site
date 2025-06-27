@@ -2,99 +2,103 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Livros</title>
+  <title>Livros - Maroon R. Parker</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
   <style>
-    body {
-      background: #fafaff;
-      color: #232333;
-      transition: background 0.3s, color 0.3s;
-      font-family: 'Segoe UI', 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
+    .autor-bloco {
+      margin-bottom: 2.5em;
     }
-    body.dark-mode {
-      background: #17171f;
-      color: #e4e4ee;
+    .autor-bloco h2 {
+      color: var(--main);
+      margin-bottom: 1em;
     }
-    #livros-card {
-      max-width: 700px;
-      margin: 2em auto;
-      background: #fff;
-      border-radius: 22px;
-      padding: 2.5em 2em 2em 2em;
-      box-shadow: 0 8px 32px #7c88d633, 0 1.5px 6px #0001;
-      border: 1.5px solid #e0e7ff;
-      animation: fadein 1s;
-      transition: background 0.3s, color 0.3s;
-    }
-    body.dark-mode #livros-card {
-      background: #23233a;
-      color: #e4e4ee;
-      border: 1.5px solid #232345;
-    }
-    @keyframes fadein {
-      from {opacity: 0; transform: translateY(40px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    #livros-card h2 {
-      text-align: center;
-      margin-bottom: 1.6em;
-      font-size: 2em;
-      color: #2d3991;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      transition: color 0.3s;
-    }
-    body.dark-mode #livros-card h2 {
-      color: #8ea4ef;
-    }
-    .livros-lista {
+    .livros-galeria {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.5em;
+      gap: 2em;
       justify-content: center;
-      margin-top: 1em;
+      margin-bottom: 1.5em;
     }
-    .livro {
-      background: #f7faff;
-      border-radius: 14px;
-      padding: 1.2em 1em;
-      width: 210px;
-      box-shadow: 0 2px 8px #7c88d622;
-      border: 1.2px solid #c2c8de;
-      transition: background 0.3s, color 0.3s, border 0.3s;
+    .livro-card {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px #0001;
+      max-width: 260px;
+      min-width: 220px;
+      padding: 1.2em;
       display: flex;
       flex-direction: column;
       align-items: center;
+      transition: background 0.3s, color 0.3s;
     }
-    .livro h3 {
-      margin: 0.8em 0 0.3em 0;
-      font-size: 1.13em;
-      color: #2d3991;
-      font-weight: 600;
-      text-align: center;
-      transition: color 0.3s;
+    body.dark-mode .livro-card {
+      background: var(--main);
+      color: var(--white);
     }
-    .livro p {
-      margin: 0;
+    .livro-capa {
+      width: 100%;
+      max-width: 180px;
+      border-radius: 8px;
+      margin-bottom: 1em;
+      box-shadow: 0 2px 8px #0002;
+    }
+    .livro-info {
       text-align: center;
+    }
+    .livro-sobre {
+      margin-bottom: 0.7em;
       font-size: 0.97em;
-      color: #444;
-      transition: color 0.3s;
     }
-    body.dark-mode .livro {
-      background: #232345;
+    .livro-download {
+      background: var(--accent);
+      color: var(--main);
+      padding: 0.5em 1.3em;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.2s, color 0.2s;
+    }
+    .livro-download:hover {
+      background: var(--main);
+      color: var(--white);
+    }
+
+    /* ===== MODO ESCURO ADICIONADO ===== */
+    body.dark-mode {
+      background: #17171f !important;
+      color: #e4e4ee !important;
+    }
+    body.dark-mode main {
+      background: transparent !important;
+      color: inherit !important;
+    }
+    body.dark-mode .autor-bloco h2 {
+      color: #8ea4ef !important;
+    }
+    body.dark-mode .livro-card {
+      background: #232345 !important;
+      color: #e4e4ee !important;
+      box-shadow: 0 4px 16px #0004;
       border: 1.2px solid #40406b;
-      color: #e4e4ee;
     }
-    body.dark-mode .livro h3 {
-      color: #8ea4ef;
+    body.dark-mode .livro-card h3 {
+      color: #8ea4ef !important;
     }
-    body.dark-mode .livro p {
-      color: #bbb;
+    body.dark-mode .livro-sobre {
+      color: #bbb !important;
     }
+    body.dark-mode .livro-download {
+      background: #8ea4ef !important;
+      color: #232345 !important;
+    }
+    body.dark-mode .livro-download:hover {
+      background: #232345 !important;
+      color: #8ea4ef !important;
+    }
+    /* ===== FIM DO MODO ESCURO ===== */
+
+    /* Toggle darkmode button */
     #toggle-darkmode {
       position: fixed;
       top: 1em;
@@ -119,33 +123,28 @@
       color: #e4e4ee;
       box-shadow: 0 1px 8px #0004;
     }
-    @media (max-width: 900px) {
-      .livros-lista { flex-direction: column; align-items: center; }
-      .livro { width: 99%; }
-      #livros-card { padding: 1.2em 0.7em 1.4em 0.7em; }
-    }
     @media (max-width: 600px) {
-      #livros-card h2 { font-size: 1.3em; }
-      #toggle-darkmode { top: 0.3em; right: 0.3em; padding: 0.5em 0.7em; font-size: 1em; }
+      #toggle-darkmode {
+        top: 0.3em;
+        right: 0.3em;
+        padding: 0.5em 0.7em;
+        font-size: 1em;
+      }
     }
   </style>
 </head>
 <body>
   <button id="toggle-darkmode" aria-label="Alternar modo escuro/claro">🌙/☀️</button>
-  <section id="livros-card">
-    <h2>Livros</h2>
-    <div class="livros-lista">
-      <div class="livro">
-        <h3>O Poder da Fé</h3>
-        <p>Um livro inspirador sobre como a fé pode transformar vidas.</p>
-      </div>
-      <div class="livro">
-        <h3>Esperança Renovada</h3>
-        <p>Descubra como manter a esperança em tempos difíceis.</p>
-      </div>
-      <!-- Adicione mais livros aqui -->
-    </div>
-  </section>
+  <header>
+    <!-- Seu header aqui -->
+  </header>
+  <main>
+    <h1>Livros</h1>
+    <div id="livros-por-autor"></div>
+  </main>
+  <footer>
+    <!-- Seu footer aqui -->
+  </footer>
   <script>
     // Dark mode toggle
     document.getElementById('toggle-darkmode').onclick = function () {
@@ -157,6 +156,29 @@
         document.body.classList.add('dark-mode');
       }
     };
+
+    fetch('livros.json')
+      .then(resp => resp.json())
+      .then(autores => {
+        const container = document.getElementById('livros-por-autor');
+        container.innerHTML = autores.map(autor => `
+          <section class="autor-bloco">
+            <h2>${autor.autor}</h2>
+            <div class="livros-galeria">
+              ${autor.livros.map(livro => `
+                <div class="livro-card">
+                  <img src="${livro.capa}" alt="Capa do livro ${livro.titulo}" class="livro-capa">
+                  <div class="livro-info">
+                    <h3>${livro.titulo}</h3>
+                    <p class="livro-sobre">${livro.sobre}</p>
+                    <a href="${livro.arquivo}" class="livro-download" download>Baixar PDF</a>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </section>
+        `).join('');
+      });
   </script>
 </body>
 </html>
